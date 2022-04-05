@@ -14,7 +14,7 @@ class APP():
         for i in self.getGeometry(660, 415): LR.append(i)
         self.screen.geometry("%dx%d+%d+%d" % (LR[0], LR[1], LR[2], LR[3]))
         self.screen.title('ElConvertor')
-        #self.screen.iconbitmap(default='DATA/ico.ico')
+        self.screen.iconbitmap(default='DATA/ico.ico')
         myappid = 'mycompany.myproduct.subproduct.version'
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         ph_BG = ImageTk.PhotoImage(file='Data/bg.png')
