@@ -24,7 +24,7 @@ class APP():
             
             ]
         for i in range(2,17):
-            desc=""
+            desc=" -"
             if(i==2):
                 desc = " -Binarie"
             elif(i==8):
@@ -34,8 +34,8 @@ class APP():
             elif (i==16):
                 desc = " -HexDecimal"
             OPTIONS.append("BASE "+str(i)+desc)
-        OPTIONS.append("BASE 24")
-        OPTIONS.append("BASE 32")
+        OPTIONS.append("BASE 24 -")
+        OPTIONS.append("BASE 32 -")
         self.sl_var1 = StringVar(self.screen)
         self.sl_var1.set("Select Base") # default value
         self.sl_var2 = StringVar(self.screen)
@@ -80,15 +80,17 @@ class APP():
 
     def Start(self):
         def CheckBaSE(n, B):
+            print(B)
             st = str(n)
             i=0
             STP=False
             while(i<len(st) and STP==False):
                 if (not("0"<=st[i]<="9")):
                     if(B<11):
-                        STP = True
+                        break
                     elif(not("A"<=st[i].upper()<="F")):
-                        STP = True
+                        break
+
 
                 i+=1
             return i==len(st)
@@ -127,7 +129,7 @@ class APP():
             INP = self.ent.get()
             if(len(INP)==0 or (not(CheckBaSE(INP, int(FB[FB.find(" ")+1: FB.find("-")-1]))))):
                 tkinter.messagebox.showerror("El Convertor",
-                    "Please Enter A Number")  # BS NOT FOUND
+                    "Please Enter A Valid Number")  # BS NOT FOUND
             else:
                 
                 B10  = convert_B_B10(str(INP.upper()), int(FB[FB.find(" ")+1: FB.find("-")-1]))
